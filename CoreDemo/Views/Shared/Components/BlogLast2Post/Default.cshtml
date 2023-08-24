@@ -1,0 +1,20 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+<h5 class="mb-4 text-white">Son eklenenler</h5>
+<!-- Item -->
+@foreach (var item in Model)
+{
+	<div class="mb-4 position-relative">
+		<div><a href="/Blog/BlogReadAll/@item.BlogID/" class="btn-link text-white fw-normal">@item.BlogTitle</a></div>
+		<p class="text-muted">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,50).LastIndexOf(" "))...</p>
+		<ul class="nav nav-divider align-items-center small mt-2 text-muted">
+			<li class="nav-item position-relative">
+				<div class="nav-link">
+					by <a href="/Blog/BlogReadAll/@item.BlogID/" class="stretched-link text-reset btn-link">Dennis</a>
+				</div>
+			</li>
+			<li class="nav-item">@(((DateTime)item.BlogCreateDate).ToString("dd MMM yyyy"))</li>
+		</ul>
+	</div>
+}
+<!-- Item -->	

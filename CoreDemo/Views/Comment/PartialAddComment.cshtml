@@ -1,0 +1,24 @@
+﻿  <!-- Reply START -->
+<div>
+    <h3>Bir yorum yapın</h3>
+    <small>Your email address will not be published. Required fields are marked *</small>
+    <form method="post" action="/Comment/PartialAddComment/" class="row g-3 mt-2">
+        <div class="col-md-6">
+            <label class="form-label">Ad Soyad *</label>
+            <input type="text" class="form-control" aria-label="Ad Soyad" name="CommentUserName">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Konu</label>
+            <input type="text" class="form-control" name="CommentTitle">
+        </div> 
+        
+        <div class="col-12">
+            <label class="form-label">Yorumunuz *</label>
+            <textarea class="form-control" rows="3" name="CommentContent"></textarea>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Yorum yap</button>
+        </div>
+    </form>
+</div>
+<!-- Reply END -->

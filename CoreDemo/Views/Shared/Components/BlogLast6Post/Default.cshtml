@@ -1,0 +1,12 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+<div>
+    <h5 class="mt-5 mb-3">Son eklenen yazılar</h5>
+    @foreach (var item in Model)
+    {
+    <div class="d-flex position-relative mb-3">
+            <span class="me-3 fa-fw fw-bold fs-3 opacity-5">@item.BlogID</span>
+            <h5 class="mb-3"><a href="/Blog/BlogReadAll/@item.BlogID/" class="stretched-link">@item.BlogTitle <br /><h6 class="mb-0">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,50).LastIndexOf(" "))...</h6></a></h5>
+    </div>   
+    }
+</div>  

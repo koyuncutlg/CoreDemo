@@ -1,0 +1,93 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+    <!-- =======================
+    Main START -->
+    <section>
+        <div class="container position-relative" data-sticky-container>
+            <div class="row">
+
+                <!-- Main Content START -->
+                <div class="col-lg-8 mb-5"> 
+                    @foreach (var item in Model)
+                    {
+                        <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i> @item.Category.CategoryName @* @await Component.InvokeAsync("CategoryNameByBlog") *@</a>
+                        <span class="ms-2 small">@(((DateTime)item.BlogCreateDate).ToString("dd MMM yyyy"))</span>
+                        <h1 class="display-5">@item.BlogTitle</h1>
+
+                        <div class="ratio ratio-16x9 overflow-hidden rounded my-4">
+                            <img src="@item.BlogImage" alt="Image">
+                        </div>
+
+                        <p> @item.BlogContent </p>
+
+
+                        <!-- Author info START -->
+                        <div class="d-flex p-2 p-md-4 my-3 bg-primary bg-opacity-10 rounded">
+                            <!-- Avatar -->
+                            <a href="#">
+                                <div class="avatar avatar-xxl me-2 me-md-4">
+                                    <img class="avatar-img rounded-circle" src="~/blogzine/assets/images/avatar/12.jpg" alt="avatar">
+                                </div>
+                            </a>
+                            <!-- Info -->
+                            <div>
+                                <div class="d-sm-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h4 class="m-0"><a href="#">Louis Ferguson</a></h4>
+                                        <small>An editor at Blogzine</small>
+                                    </div>
+                                    <a href="#" class="btn btn-xs btn-primary-soft">View Articles</a>
+                                </div>
+                                <p class="my-2">Louis Ferguson is a senior editor for the blogzine and also reports on breaking news based in London. He has written about government, criminal justice, and the role of money in politics since 2015.</p>
+                                <!-- Social icons -->
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                      
+                        <!-- Author info END -->
+                        @await Component.InvokeAsync("CommentListByBlog",new {id= ViewBag.i})
+                        //  @await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")
+
+                        @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
+                    }
+                </div>
+
+                <!-- Main Content END -->
+                <!-- Right sidebar START -->
+                <div class="col-lg-4">
+                    <div data-sticky data-margin-top="80" data-sticky-for="991">                 
+                        <!-- Categories -->
+                        @await Component.InvokeAsync("CategoryList")
+
+                        <!-- Most read -->                        
+                            @await Component.InvokeAsync("BlogLast6Post")                            
+                      
+                        <!-- Newsletter  -->
+                        @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+                    </div>
+                </div>
+                <!-- Right sidebar END -->
+            </div>
+        </div>
+        }
+    </section>
+    <!-- =======================
+    Main END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->

@@ -1,0 +1,78 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<!-- =======================
+Inner intro START -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
+                <div class="bg-primary bg-opacity-10 rounded p-4 p-sm-5">
+                    <h2>Yazar Kayıt Sayfası</h2>
+                    <!-- Form START -->
+                    @using(Html.BeginForm("Index","Register",FormMethod.Post))
+                    {
+                    <form method="post" class="mt-4">
+                        <!-- Name Surname -->
+                        <div class="mb-3">
+                            <label class="form-label" for="exampleInputEmail1">Ad - Soyad</label>
+                          @*   <input type="text" class="form-control" id="exampleInputEmail1" name="WriterName" aria-describedby="emailHelp" placeholder="Ad Soyad"> *@
+                                @Html.TextBoxFor(x=>x.WriterName, new {@class="form-control"})
+                                @Html.ValidationMessageFor(x=>x.WriterName,"", new {@class="text-danger"})
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label" for="exampleInputEmail1">E-Posta Adresi</label>
+                          @*   <input type="email" class="form-control" id="exampleInputEmail1" name="WriterMail" aria-describedby="emailHelp" placeholder="E-Posta Adresi"> *@
+                                @Html.TextBoxFor(x=>x.WriterMail, new {@class="form-control" })
+                                @Html.ValidationMessageFor(x=>x.WriterMail,"", new {@class="text-danger"})
+                      </div>
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label" for="exampleInputPassword1">Şifre</label>
+                         @*    <input type="password" class="form-control" id="exampleInputPassword1" name="WriterPassword" placeholder="*********"> *@
+                                @Html.TextBoxFor(x=>x.WriterPassword, new {@class="form-control"})
+                                @Html.ValidationMessageFor(x=>x.WriterPassword,"", new {@class="text-danger"})
+                        </div>
+                        <!-- Writer Image -->
+                        <div class="mb-3">
+                            <label class="form-label" for="exampleInputEmail1">Görsel Dosya Yolu</label>
+                           @*  <input type="text" class="form-control" id="exampleInputEmail1" name="WriterImage" aria-describedby="emailHelp" placeholder="Görsel Dosya Yolu"> *@
+                                @Html.TextBoxFor(x=>x.WriterImage, new {@class="form-control"})
+                                @Html.ValidationMessageFor(x=>x.WriterImage,"", new {@class="text-danger"})
+                       </div>
+                        <!-- Checkbox -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                            <label class="form-check-label" id="btn1" for="exampleCheck1">Tüm şartları okudum, kabul ediyorum.</label>
+                        </div>
+                        <!-- Button -->
+                        <div class="row align-items-center">
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-success">Kayıt Ol</button>
+                            </div>
+                            <div class="col-sm-8 text-sm-end">
+                                <span>Zaten bir hesabınız var mı? <a href="signin.html"><u>Giriş Yap</u></a></span>
+                            </div>
+                        </div>
+                    </form>
+                    }
+                    <!-- Form END -->               
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <script>
+        $('#btn1').click(function () {
+            swal("Site Kabul Şartları","Sitemizde verdiğiniz mail adresi üzerinden bilgi ve haber e-postaları spam ölçüsüne varmadan gönderilmeye devam edileceektir. Eğer e-posta bülteninden çıkmak isterseniz mail ileti dizisini durdurabilirsiniz. Şifre ve mail adresleriniz şifrelenmiş formatta herhangi bir kullanıcının görmeyeceği şekilde veritabanlarımızda saklanmaktadır.");
+        });
+    </script>
+</section>
+<!-- =======================
+Inner intro END -->

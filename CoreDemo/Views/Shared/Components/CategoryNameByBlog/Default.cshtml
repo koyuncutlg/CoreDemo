@@ -1,0 +1,7 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+ @foreach (var item in Model)
+                {              
+                    @item.Category.CategoryName
+}
