@@ -2,8 +2,8 @@
 
 namespace BussinessLayer.Abstract
 {
-	public interface IWriterService
-	{
-		void WriterAdd(Writer writer);
-	}
+    public interface IWriterService : IGenericService<Writer>
+    {
+        List<Writer> GetWriterById(int id);
+    }
 }

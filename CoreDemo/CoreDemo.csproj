@@ -31,6 +31,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\blogzine\rtl\blots\" />
     <Folder Include="wwwroot\blogzine\rtl\formats\" />
+    <Folder Include="wwwroot\WriterImageFiles\" />
   </ItemGroup>
 
 </Project>

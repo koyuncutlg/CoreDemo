@@ -27,7 +27,7 @@ namespace CoreDemo.Controllers
             {
                  p.WriterStatus = true;
                 p.WriterAbuot = "Test";
-                wm.WriterAdd(p);
+                wm.TAdd(p);
                 return RedirectToAction("Index", "Blog");
 
             }
